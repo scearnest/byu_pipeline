@@ -2,7 +2,7 @@
 version 10.0 v5
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="2550" y="301" w="1700" h="1041" screen="0">
+    <window x="2423" y="52" w="1700" h="1069" screen="1">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
@@ -10,12 +10,12 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
             </dock>
             <split size="1017" stretch="1"/>
             <splitter orientation="2">
-                <split size="568"/>
+                <split size="584"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
                 </dock>
-                <split size="399"/>
-                <dock id="" activePageId="DAG.1">
+                <split size="411"/>
+                <dock id="" activePageId="DAG.1" focus="true">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
@@ -31,7 +31,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 }
 Root {
  inputs 0
- name /users/animation/scearnes/Desktop/byu_pipeline/nuke-tools/versions/.nk
+ name /users/animation/scearnes/Desktop/byu_pipeline/nuke-tools/Shots/Shot1.nk
  format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
  proxy_type scale
  proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
@@ -45,10 +45,8 @@ Root {
 }
 Viewer {
  inputs 0
- frame 1
  frame_range 1-100
  name Viewer1
- selected true
- xpos -40
- ypos -9
+ xpos -140
+ ypos -25
 }
