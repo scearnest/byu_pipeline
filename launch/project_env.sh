@@ -27,7 +27,7 @@ then
 fi
 
 export BYU_PROJECT_DIR=${projectDir}
-export BYU_TOOLS_DIR=${projectDir}/byu-pipeline-tools
+export BYU_TOOLS_DIR=${projectDir}/byu_pipeline/tools
 
 # PySide (Note PySide doesn't work with Maya but PySide2 comes with Maya and gets loaded in automatically)
 # Also in /usr/lib64/python2.7/site-packages are most of the other python packages like PyQt4 (which we don't use) and sip (but I don't know if anything really uses anything here but we can have it just in case.)
@@ -49,6 +49,9 @@ export NUKE_TOOLS_DIR=${BYU_TOOLS_DIR}/nuke-tools
 export NUKE_PATH=${NUKE_TOOLS_DIR}
 
 #Mari
-export MARI_LOCATION=/opt
+#export MARI_LOCATION=/opt
+
+#SubstancePainter
+#export SUBSTANCE_LOCATION=
 
 cd ${pwd}
