@@ -3,21 +3,14 @@ from ... import tools
 
 class HoudiniTools(Tools):
 
-    __init__():
+    def __init__(self):
         pass
 
-    @override
-    @classmethod
-    def checkout(cls):
-        asset = cls.get_selected_nodes()
+    def checkout(self):
         pass
 
-    @override
-    @classmethod
-    def publish(cls):
+    def publish(self):
         pass
 
-    @override
-    @classmethod
-    def rollback(cls):
+    def rollback(self):
         pass

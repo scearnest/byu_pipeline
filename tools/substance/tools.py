@@ -1,8 +1,9 @@
-from tools.tools import Tools
+from . import tools.Tool
 
-class SubstanceTools(Tools):
 
-    __init__():
+class SubstanceTools(Tool):
+
+    def __init__(self):
         pass
 
     def checkout(self):
