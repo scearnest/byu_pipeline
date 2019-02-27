@@ -1,7 +1,7 @@
-from . import tools.Tool
+from tools.tools import Tools
 
 
-class SubstanceTools(Tool):
+class SubstanceTools(Tools):
 
     def __init__(self):
         pass
