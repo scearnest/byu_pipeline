@@ -1,5 +1,5 @@
 
-class CheckoutWindow:
+class AssembleWindow:
 
 	def __init__(self):
 		pass
