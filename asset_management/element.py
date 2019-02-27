@@ -20,7 +20,7 @@ class Element():
         pass
 
 class ElementFactory():
-    def __init__():
+    def __init__(self):
         pass
 
 
