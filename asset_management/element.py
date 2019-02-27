@@ -19,6 +19,27 @@ class Element():
         self.notes = notes
         pass
 
+    def load_pipeline_filepath(self):
+        return  # TODO stuff
+
+    def update_pipeline_file(self):
+        return  # TODO stuff
+
+    def checkout(self):
+        return  # TODO stuff
+
+    def publish(self):
+        return  # TODO stuff
+
+    def get_shot_name(self):
+        return  # TODO stuff
+
+    def get_last_publish(self):
+        return  # TODO stuff
+
+    def update_cache(self):
+        return  # TODO stuff
+
 class ElementFactory():
     def __init__(self):
         pass
