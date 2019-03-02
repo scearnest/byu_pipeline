@@ -1,4 +1,15 @@
+import getpass
 import os
+import pwd
+
+import pipelineUtility
+
+# from . import pipelineUtility
+
+
+def test():
+	print(pipelineUtility.timestamp())
+
 
 class Environment():
 
