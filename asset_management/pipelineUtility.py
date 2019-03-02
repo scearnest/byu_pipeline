@@ -1,5 +1,16 @@
-def read_file():
-    pass
+import glob
+import json
+import os
+import re
+import smtplib
+import time
+
+
+def read_file(filepath):
+    with open(filepath, "r") as json_file:
+        json_data = json.load(json_file)
+
+    return json_data
 
 
 def write_file():

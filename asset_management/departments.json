@@ -1,0 +1,28 @@
+{
+	"departments": [
+		{
+		"name" : "model",
+		"nice_name" : "Modeling",
+		"has_cache" : 1,
+		"file_formats" : [".mb", ".ztl", ".hip"]
+		},
+		{
+		"name" : "texture",
+		"nice_name" : "Texturing",
+		"has_cache" : 1,
+		"file_formats" : ["mb", "ztl", "hip"]
+		},
+		{
+		"name" : "rig",
+		"nice_name" : "Rigging",
+		"has_cache" : 1,
+		"file_formats" : ["mb", "ztl", "hip"]
+		},
+		{
+		"name" : "material",
+		"nice_name" : "Material",
+		"has_cache" : 1,
+		"file_formats" : ["mb", "ztl", "hip"]
+		}
+	]
+}
