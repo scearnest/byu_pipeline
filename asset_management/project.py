@@ -1,84 +1,103 @@
+import os
+import shutil
+
+from .asset import Asset, AssetType
+# from .department import Department
+from .element import Element
+from .checkout import Checkout
+from .environment import Environment
+from .user import User
+from . import pipelineUtility
+from .registry import Registry
+
+# FIXME: This class is pointless for the most part. It's just referring to Environment class for everything
+
+
 class Project():
 	def __init__(self):
-		return  # TODO stuff
+		self.env = Environment()
 
 	def get_name(self):
-		return  # TODO stuff
+		return self.env.get_project_name()
 
 	def get_project_dir(self):
-		return  # TODO stuff
+		return self.env.get_project_dir()
 
 	def get_assets_dir(self):
-		return  # TODO stuff
-
-	def get_shots_dir(self):
-		return  # TODO stuff
-
-	def get_tools_dir(self):
-		return  # TODO stuff
-
-	def get_crowds_dir(self):
-		return  # TODO stuff
+		return self.env.get_assets_dir()
 
 	def get_users_dir(self):
-		return  # TODO stuff
+		return self.env.get_users_dir()
 
-	def get_user(self):
-		return  # TODO stuff
+	def get_user(self, username):
+		return self.env.get_user(username)
 
 	def get_current_username(self):
-		return  # TODO stuff
+		return self.env.get_current_username()
 
-	def get_asset(self):
-		return  # TODO stuff
+	'''
+	:name:      name of the object
+	:return:    Asset object with the given name
+	'''
+	def get_asset(self, name):  # TODO: WE MAY NEED TO ADD MORE TO THIS FUNCTION BASED ON AssetType
+		file_path = os.path.join(self.get_assets_dir(), name)
+		if not os.path.exists(file_path):
+			return None
+		return Asset(file_path)
 
-	def get_shot(self):
-		return  # TODO stuff
+	'''
+	:name:      the name of the new asset to create
+	:asset_type: type of asset to create
+	:return:    a new asset with the given name
+	'''
+	def create_asset(self, name, asset_type):
+		name = pipelineUtility.alphanumeric(name)
+		file_path = os.path.join(Asset.get_parent_directory(), name)
 
-	def get_tool(self):
-		return  # TODO stuff
+		if name in self.list_assets():
+			raise EnvironmentError('asset already exists: ' + file_path)
+		if not pipelineUtility.mkdir(file_path):
+			raise OSError('couldn\'t create body directory: ' + file_path)
+		# datadict = Asset.create_new_dict(name)
 
-	def get_crowd_cycle(self):
-		return  # TODO stuff
+		pipelineUtility.write_file(os.path.join(file_path, Asset.PIPELINE_FILENAME), datadict)  # TODO: NEED A BETTER WAY TO WRITE FILES
+		new_asset = Asset(file_path)  # TODO: ADD AN ASSET TYPE TO CONSTRUCTOR
 
-	def get_body(self):
-		return  # TODO stuff
+		for dept in Asset.default_departments():
+			pipelineUtility.mkdir(os.path.join(file_path, dept))
+			new_asset.create_element(dept, Element.DEFAULT_NAME)  # FIXME
 
-	def _create_body(self):
-		return  # TODO stuff
+		return new_asset
 
-	def create_asset(self):
-		return  # TODO stuff
+	'''
+	:return:        a list of strings containing the names of all assets in this project
+	:filter:        a tuple containing an attribute (string) relation (operator) and value
+				e.g. (Asset.TYPE, operator.eq, AssetType.CHARACTER). Only returns assets whose
+				given attribute has the relation to the given desired value. Defaults to None.
+	'''
+	def list_assets(self, file_path=None, filter=None):
+		if file_path is None:
+			file_path = self.get_assets_dir()
+			
+		directory_list = os.listdir(file_path)
+		asset_list = []
 
-	def create_shot(self):
-		return  # TODO stuff
+		for directory in directory_list:
+			abspath = os.path.join(file_path, directory)
+			if os.path.exists(os.path.join(abspath, Asset.PIPELINE_FILENAME)):
+				asset_list.append(directory)
 
-	def create_crowd_cycle(self):
-		return  # TODO stuff
+		asset_list.sort()
 
-	def create_tool(self):
-		return  # TODO stuff
+		if filter is not None and len(filter) == 3:  # TODO: Do something with filter. At least filter by asset type
+			filtered_asset_list = []
+			for asset in asset_list:
+				obj = self.get_asset(asset)
+				if obj.has_relation(filter[0], filter[1], filter[2]):  # TODO: learn more
+					filtered_asset_list.append(asset)
+			asset_list = filtered_asset_list
 
-	def _list_bodies_in_dir(self):
-		return  # TODO stuff
-
-	def list_assets(self):
-		return  # TODO stuff
-
-	def list_shots(self):
-		return  # TODO stuff
-
-	def list_tools(self):
-		return  # TODO stuff
-
-	def list_crowd_cycles(self):
-		return  # TODO stuff
-
-	def list_sets(self):
-		return  # TODO stuff
-
-	def list_bodies(self):
-		return  # TODO stuff
+		return asset_list
 
 	def list_users(self):
 		return  # TODO stuff
@@ -92,14 +111,5 @@ class Project():
 	def get_checkout_element(self):
 		return  # TODO stuff
 
-	def delete_shot(self):
-		return  # TODO stuff
-
 	def delete_asset(self):
-		return  # TODO stuff
-
-	def delete_tool(self):
-		return  # TODO stuff
-
-	def delete_crowd_cycle(self):
 		return  # TODO stuff

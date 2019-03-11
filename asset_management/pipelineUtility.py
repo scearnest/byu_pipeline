@@ -14,7 +14,7 @@ def read_file(filepath):
 	return json_data
 
 
-def write_file():
+def write_file(some_arg):
 	pass
 
 

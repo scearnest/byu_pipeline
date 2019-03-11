@@ -1,4 +1,5 @@
-from ... import tools
+from tools.tools import Tools
+
 
 class NukeTools(Tools):
 
