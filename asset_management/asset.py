@@ -1,3 +1,4 @@
+import os
 
 
 class Asset:
@@ -11,39 +12,39 @@ class Asset:
         self.pipeline_file = pipeline_file
         self.assets = assets
     
-    def default_departments(self):
+    def getDepartments(self):
         return  # TODO stuff
 
-    def get_parent_directory(self):
+    def getParentDirectory(self):
         return  # TODO stuff
 
-    def get_type(self):
+    def getType(self):
         return self.type
 
-    def get_element(self):
+    def getElement(self):
         return  # TODO stuff
 
-    def create_element(self):
+    def createElement(self):
         return  # TODO stuff
 
-    def list_elements(self):
+    def listElements(self):
         return  # TODO stuff
 
-    def add_reference(self):
+    def addReference(self):
         return  # TODO stuff
 
-    def remove_reference(self):
+    def removeReference(self):
         return  # TODO stuff
 
-    def set_description(self):
+    def setDescription(self):
         return  # TODO stuff
 
-    def get_references(self):
+    def getReferences(self):
         return  # TODO stuff
 
-    def has_relation(self):
+    def hasRelation(self):
         return  # TODO stuff
 
-    def get_info(self):
+    def getInfo(self):
         return  # TODO stuff
 
