@@ -14,8 +14,18 @@ def read_file(filepath):
 	return json_data
 
 
-def write_file(some_arg):
-	pass
+'''
+:parameter file_path: path to file that will be written
+:parameter dictionary: dictionary object that will be dumped as JSON into a file
+'''
+def write_file(file_path, dictionary):
+	tmp_name, tmp_ext = os.path.splitext(file_path)
+	tmp_filepath = tmp_name + "_tmp" + tmp_ext
+
+	with open(tmp_filepath, "w") as json_file:
+		json.dump(dictionary, json_file, indent=0)
+
+	os.rename(tmp_filepath, file_path)
 
 
 def mkdir(dirpath):

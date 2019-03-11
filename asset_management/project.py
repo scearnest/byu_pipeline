@@ -100,16 +100,35 @@ class Project():
 		return asset_list
 
 	def list_users(self):
-		return  # TODO stuff
+		users_dir = self.get_users_dir()
+		dir_list = os.listdir(users_dir)
+		user_list = []
 
-	def is_checkout_dir(self):
-		return  # TODO stuff
+		for username in dir_list:
+			user_file = os.path.join(users_dir, username, User.PIPELINE_FILENAME)
+			if os.path.exists(user_file):
+				user_list.append(username)
 
-	def get_checkout(self):
-		return  # TODO stuff
+		user_list.sort()
+		return user_list
 
-	def get_checkout_element(self):
-		return  # TODO stuff
+	def is_checkout_dir(self, path):
+		return os.path.exists(os.path.join(path, Checkout.PIPELINE_FILENAME))
 
-	def delete_asset(self):
-		return  # TODO stuff
+	def get_checkout(self, path):
+		if not self.is_checkout_dir(path):
+			return None
+		return Checkout(path)
+
+	def get_checkout_element(self, path):
+		checkout = self.get_checkout(path)
+		if checkout is None:
+			return None
+
+		asset = self.get_asset(checkout.get_asset_name())
+		element = asset.get_element(checkout.get_department_name(), checkout.get_element_name())  # TODO: Finish asset class
+		return element
+
+	def delete_asset(self, asset):
+		if asset in self.list_assets():
+			shutil.rmtree(os.path.join(self.get_assets_dir(), asset))

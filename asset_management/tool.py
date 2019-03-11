@@ -1,2 +1,8 @@
+from .asset import Asset
+
+
 class Tool(Asset):
-  def _init_(self):
+
+	def __init__(self):
+		super().__init__()
+		pass
