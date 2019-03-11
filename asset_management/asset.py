@@ -1,3 +1,4 @@
+
 from enum import Enum
 import os
 
@@ -63,7 +64,6 @@ class Asset:
 
 	def get_info(self):
 		return  # TODO stuff
-
 
 class AssetType(Enum):
 	Character_Group = 1
